@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+.flapy { width: 350px }
+.flapy-header { list-style-type: none; margin: 0; padding: 0 }
+.flapy-header li { border-bottom: 1px solid #DDD; cursor: pointer; float: left; list-style: none; text-align: center }
+.flapy-header li div {
+  background-image: -moz-linear-gradient(top, #FFF, #E6E6E6);
+  background-image: -o-linear-gradient(top, #FFF, #E6E6E6);
+  background-image: -ms-linear-gradient(top, #FFF, #E6E6E6);
+  background-image: linear-gradient(top, #FFF, #E6E6E6);
+
+  border-left: 1px solid #DDD; border-right: 1px solid #DDD; border-top: 1px solid #DDD; font: bold 15px arial; letter-spacing: 1px; height: 30px; margin-top: 5px; padding-top: 13px
+}
+
+.flapy-header li:first-child div { border-right: none }
+.flapy-header li:last-child div { border-left: none }
+
+.flapy-header li.flapy-none-left div { border-left: none }
+.flapy-header li.flapy-none-right div { border-right: none }
+
+.flapy-header li.active { background-color: #FFF; border-bottom: none; cursor: default; height: 100% }
+.flapy-header li.active div { background-image: none; height: 31px; margin-top: 0; padding-top: 18px }
+.flapy-header li.active:first-child div { border-right: 1px solid #DDD }
+.flapy-header li.active:last-child div { border-left: 1px solid #DDD }
+
+.flapy-wrapper { border-bottom: 1px solid #DDD; border-left: 1px solid #DDD; border-right: 1px solid #DDD }
+.flapy-wrapper .flapy-box { border: none }
+
+.flapy-box { background-color: #FFF; border-bottom: 1px solid #DDD; border-left: 1px solid #DDD; border-right: 1px solid #DDD; clear: both; display: none; padding-top: 1px }
+.flapy-box.active { display: block }
