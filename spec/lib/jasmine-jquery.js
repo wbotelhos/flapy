@@ -26,8 +26,8 @@ var sandbox = function(attributes) {
   return jasmine.getFixtures().sandbox(attributes)
 }
 
-var spyOnEvent = function(selector, eventName) {
-  return jasmine.JQuery.events.spyOn(selector, eventName)
+var spyOnEvent = function(element, eventName) {
+  return jasmine.JQuery.events.spyOn(element, eventName)
 }
 
 var preloadStyleFixtures = function() {
@@ -58,8 +58,8 @@ var getJSONFixture = function(url) {
   return jasmine.getJSONFixtures().proxyCallTo_('read', arguments)[url]
 }
 
-jasmine.spiedEventsKey = function (selector, eventName) {
-  return [$(selector).selector, eventName].toString()
+jasmine.spiedEventsKey = function (element, eventName) {
+  return [$(element).element, eventName].toString()
 }
 
 jasmine.getFixtures = function() {
@@ -296,28 +296,28 @@ jasmine.JQuery.matchersClass = {}
   }
 
   namespace.events = {
-    spyOn: function(selector, eventName) {
+    spyOn: function(element, eventName) {
       var handler = function(e) {
-        data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] = e
+        data.spiedEvents[jasmine.spiedEventsKey(element, eventName)] = e
       }
-      $(selector).bind(eventName, handler)
+      $(element).bind(eventName, handler)
       data.handlers.push(handler)
       return {
-        selector: selector,
+        element: element,
         eventName: eventName,
         handler: handler,
         reset: function(){
-          delete data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)]
+          delete data.spiedEvents[jasmine.spiedEventsKey(element, eventName)]
         }
       }
     },
 
-    wasTriggered: function(selector, eventName) {
-      return !!(data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)])
+    wasTriggered: function(element, eventName) {
+      return !!(data.spiedEvents[jasmine.spiedEventsKey(element, eventName)])
     },
 
-    wasPrevented: function(selector, eventName) {
-      return data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)].isDefaultPrevented()
+    wasPrevented: function(element, eventName) {
+      return data.spiedEvents[jasmine.spiedEventsKey(element, eventName)].isDefaultPrevented()
     },
 
     cleanUp: function() {
@@ -403,19 +403,19 @@ jasmine.JQuery.matchersClass = {}
       return hasProperty(this.actual.data(key), expectedValue)
     },
 
-    toBe: function(selector) {
-      return this.actual.is(selector)
+    toBe: function(element) {
+      return this.actual.is(element)
     },
 
-    toContain: function(selector) {
-      return this.actual.find(selector).length
+    toContain: function(element) {
+      return this.actual.find(element).length
     },
 
-    toBeDisabled: function(selector){
+    toBeDisabled: function(element){
       return this.actual.is(':disabled')
     },
 
-    toBeFocused: function(selector) {
+    toBeFocused: function(element) {
       return this.actual.is(':focus')
     },
 
@@ -490,51 +490,51 @@ jasmine.JQuery.matchersClass = {}
 beforeEach(function() {
   this.addMatchers(jasmine.JQuery.matchersClass)
   this.addMatchers({
-    toHaveBeenTriggeredOn: function(selector) {
+    toHaveBeenTriggeredOn: function(element) {
       this.message = function() {
         return [
-          "Expected event " + this.actual + " to have been triggered on " + selector,
-          "Expected event " + this.actual + " not to have been triggered on " + selector
+          "Expected event " + this.actual + " to have been triggered on " + element,
+          "Expected event " + this.actual + " not to have been triggered on " + element
         ]
       }
-      return jasmine.JQuery.events.wasTriggered(selector, this.actual)
+      return jasmine.JQuery.events.wasTriggered(element, this.actual)
     }
   })
   this.addMatchers({
     toHaveBeenTriggered: function(){
       var eventName = this.actual.eventName,
-          selector = this.actual.selector
+          element = this.actual.element
       this.message = function() {
         return [
-          "Expected event " + eventName + " to have been triggered on " + selector,
-          "Expected event " + eventName + " not to have been triggered on " + selector
+          "Expected event " + eventName + " to have been triggered on " + element,
+          "Expected event " + eventName + " not to have been triggered on " + element
         ]
       }
-      return jasmine.JQuery.events.wasTriggered(selector, eventName)
+      return jasmine.JQuery.events.wasTriggered(element, eventName)
      }
   })
   this.addMatchers({
-    toHaveBeenPreventedOn: function(selector) {
+    toHaveBeenPreventedOn: function(element) {
       this.message = function() {
         return [
-          "Expected event " + this.actual + " to have been prevented on " + selector,
-          "Expected event " + this.actual + " not to have been prevented on " + selector
+          "Expected event " + this.actual + " to have been prevented on " + element,
+          "Expected event " + this.actual + " not to have been prevented on " + element
         ]
       }
-      return jasmine.JQuery.events.wasPrevented(selector, this.actual)
+      return jasmine.JQuery.events.wasPrevented(element, this.actual)
     }
   })
   this.addMatchers({
     toHaveBeenPrevented: function() {
       var eventName = this.actual.eventName,
-          selector = this.actual.selector
+          element = this.actual.element
       this.message = function() {
         return [
-          "Expected event " + eventName + " to have been prevented on " + selector,
-          "Expected event " + eventName + " not to have been prevented on " + selector
+          "Expected event " + eventName + " to have been prevented on " + element,
+          "Expected event " + eventName + " not to have been prevented on " + element
         ]
       }
-      return jasmine.JQuery.events.wasPrevented(selector, eventName)
+      return jasmine.JQuery.events.wasPrevented(element, eventName)
     }
   })
 })

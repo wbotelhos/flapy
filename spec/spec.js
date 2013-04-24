@@ -1,11 +1,6 @@
-function context(description, spec) {
-  describe(description, spec);
-};
-
 describe('Flapy', function() {
-
   beforeEach(function() {
-    $('body').append(
+    Helper.html(
       '<div id="tab">' +
         '<div>Box 1</div>' +
         '<div>Box 2</div>' +
@@ -14,9 +9,7 @@ describe('Flapy', function() {
     );
   });
 
-  afterEach(function() {
-    $('#tab').remove();
-  });
+  afterEach(function() { Helper.clear(); });
 
   describe('channing', function() {
     it ('is chainable', function() {
@@ -286,7 +279,7 @@ describe('Flapy', function() {
     });
 
     context('with rounded width', function() {
-      it ('do the round division for each tab', function() {
+      it ('does the round division for each tab', function() {
         // given
         var tab = $('#tab').width(300);
 
@@ -305,7 +298,7 @@ describe('Flapy', function() {
     });
 
     context('with not rounded width', function() {
-      it ('do the round division for each tab and increment 1 for each left to right tab', function() {
+      it ('does the round division for each tab and increment 1 for each left to right tab', function() {
         // given
         var tab = $('#tab').width(302);
 
