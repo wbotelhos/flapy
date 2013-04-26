@@ -228,7 +228,6 @@ describe('Flapy', function() {
         });
       });
 
-
       context('and activating via click', function() {
         context('on click on the last tab', function() {
           it ('applies none border right style on prev inactive tab', function() {
@@ -464,6 +463,33 @@ describe('Flapy', function() {
         // then
         var tabs = tab.children(tab[0].opt.wrapper).children(tab[0].opt.box);
         expect(tabs).toHaveClass('flapy-box');
+      });
+    });
+  });
+
+
+  describe('#border', function() {
+    context('disabled', function() {
+      it ('prevents the border styles', function() {
+        // given
+        var tab = $('#tab');
+
+        // when
+        tab.flapy({
+          border : false,
+          headers: [{ text: 'Ruby', active: true }, { text: 'Python' }, { text: 'Java' }]
+        });
+
+        // then
+        var tabs = tab[0].opt.tabs;
+
+        expect(tabs.eq(0)).not.toHaveClass('flapy-none-left');
+        expect(tabs.eq(1)).not.toHaveClass('flapy-none-left');
+        expect(tabs.eq(2)).not.toHaveClass('flapy-none-left');
+
+        expect(tabs.eq(0)).not.toHaveClass('flapy-none-right');
+        expect(tabs.eq(1)).not.toHaveClass('flapy-none-right');
+        expect(tabs.eq(2)).not.toHaveClass('flapy-none-right');
       });
     });
   });

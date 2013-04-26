@@ -5,7 +5,7 @@ jQuery Flapy is a plugin to transform containers in tab menu.
 ## Version
 
 ```
-@version        0.1.0
+@version        0.2.0
 @since          2012-01-11
 @author         Washington Botelho
 @documentation  wbotelhos.com/flapy
@@ -20,6 +20,7 @@ jQuery Flapy is a plugin to transform containers in tab menu.
 ## Options
 
 ```js
+border  : true      // Changes the tab borders automatic.
 box     : 'div'     // The children that will represent the boxes.
 headers : []        // Array of object containing <code>tag</code>, <code>text</code> and <code>active</code> attributes representing each tab.
 wrapper : undefined // An element that will keeps all boxes.
@@ -28,7 +29,7 @@ wrapper : undefined // An element that will keeps all boxes.
 ## Usage
 
 ```js
-$('selector').flapy();
+$('#tab').flapy();
 ```
 
 ```html

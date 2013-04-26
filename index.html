@@ -30,7 +30,7 @@
 
 			<nav role="navigation">
 			  <ul>
-			    <li><a href="http://github.com/wbotelhos/flapy/archive/0.1.0.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v0.1.0</a></li>
+			    <li><a href="http://github.com/wbotelhos/flapy/archive/0.2.0.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v0.2.0</a></li>
           <li><a href="http://github.com/wbotelhos/flapy" title="Github" target="_blank"><i class="icon-github icon-large"></i>Github</a></li>
           <li><a href="http://wbotelhos.com/labs" title="yLab" target="_blank"><i class="icon-beaker icon-large"></i>yLab</a></li>
           <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Flapy" title="Donate" target="_blank"><i class="icon-heart-empty icon-large"></i>Donate</a></li>
@@ -158,6 +158,29 @@
 </pre>
 </div>
 
+        <h2>Styling the tabs:</h2>
+
+        <p>
+          You can disable the auto borders to design your own tab style.
+        </p>
+
+        <div class="demo">
+          <div id="border">
+            <div>Box 1</div>
+            <div>Box 2</div>
+            <div>Box 3</div>
+          </div>
+        </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'selector'</span><span class="p">).</span><span class="nx">flapy</span><span class="p">({</span>
+  <span class="nx">active</span> <span class="o">:</span> <span class="kc">true</span>,
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span> <span class="p">}]</span>
+<span class="p">});</span>
+</pre>
+</div>
+
           <h2 id="global">Changing the settings globally:</h2>
 
           <p>
@@ -172,6 +195,11 @@
 </div>
 
           <h2 id="options">Options:</h2>
+
+          <div id="border" class="option">
+            <div>border: <span>true</span></div>
+            <p>Changes the tab borders automatic.</p>
+          </div>
 
           <div id="box" class="option">
             <div>box: <span>'div'</span></div>
@@ -240,6 +268,10 @@
       $('#wrapper-box').flapy({
         headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' } ],
         wrapper: 'div'
+      });
+
+      $('#border').flapy({
+        headers: [{ tag: 'h3', text: 'Ruby' }, { tag: 'h3', text: 'Python' }, { tag: 'h3', text: 'Java' } ]
       });
     });
 

@@ -2,3 +2,14 @@
 .flapy-box { color: #777; font: bold 1.8em arial; padding: 70px 0 !important; text-align: center }
 .flapy-header h3 { background-color: #FFF; font-size: 1em; margin-top: 0 }
 
+#border .flapy-header li { border-bottom: none; cursor: pointer; float: left; list-style: none; text-align: center }
+#border .flapy-header li.active { background-color: transparent; border-bottom: none }
+
+#border .flapy-header li div { background: none; border: none; height: 42px }
+
+#border .flapy-header li div h3 { background-color: transparent; color: #444; width: 80px; margin: 0 auto; padding: 6px 8px 7px }
+#border .flapy-header li:hover div h3 { color: #666 }
+#border .flapy-header li.active div h3 { background-color: #AAA; border-radius: 20px; box-shadow: 0 1px 0 #FFF, 0 1px 1px rgba(0, 0, 0, 0.2) inset; color: #FFF; cursor: default; padding: 6px 8px 7px; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15) }
+#border .flapy-header li.active:hover div h3 { color: #FFF }
+
+#border .flapy-box { border-radius: 5px }
