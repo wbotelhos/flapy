@@ -1,6 +1,6 @@
 describe('Flapy', function() {
   beforeEach(function() {
-    Helper.html(
+    Factory.html(
       '<div id="tab">' +
         '<div>Box 1</div>' +
         '<div>Box 2</div>' +
@@ -9,13 +9,13 @@ describe('Flapy', function() {
     );
   });
 
-  afterEach(function() { Helper.clear(); });
+  afterEach(function() { Factory.clear(); });
 
   describe('channing', function() {
     it ('is chainable', function() {
       // given
-      var tab  = $('#tab'),
-          clazz  = 'some-class';
+      var tab   = $('#tab'),
+          clazz = 'some-class';
 
       // when
       tab.flapy().addClass(clazz);
