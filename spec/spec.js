@@ -48,7 +48,7 @@ describe('Flapy', function() {
 
         // when
         tab.flapy({
-          headers: [{ text: 'Ruby' }, { text: 'Python' }]
+          headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' }]
         });
 
         // then
@@ -56,13 +56,13 @@ describe('Flapy', function() {
         expect(header).toHaveClass('flapy-header');
 
         var tabs = header.children('li');
-        expect(tabs.length).toBe(2);
+        expect(tabs.length).toEqual(3);
 
         var spacers = tabs.children('div');
-        expect(spacers.length).toBe(2);
+        expect(spacers.length).toEqual(3);
 
         var tag = spacers.children();
-        expect(tag.length).toBe(0);
+        expect(tag.length).toEqual(0);
 
         expect(spacers[0].innerHTML).toBe('Ruby');
         expect(spacers[1].innerHTML).toBe('Python');
@@ -76,7 +76,7 @@ describe('Flapy', function() {
 
         // when
         tab.flapy({
-          headers: [{ tag: 'h2', text: 'Ruby' }, { tag: 'h2', text: 'Python' }]
+          headers: [{ tag: 'h2', text: 'Ruby' }, { tag: 'h2', text: 'Python' }, { text: 'Java' }]
         });
 
         // then
@@ -96,7 +96,7 @@ describe('Flapy', function() {
 
         // when
         tab.flapy({
-          headers: [{ text: 'Ruby' }, { text: 'Python' }]
+          headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' }]
         });
 
         // then
@@ -114,7 +114,7 @@ describe('Flapy', function() {
 
         // when
         tab.flapy({
-          headers: [{ text: 'Ruby' }, { text: 'Python', active: true }]
+          headers: [{ text: 'Ruby' }, { text: 'Python', active: true }, { text: 'Java' }]
         });
 
         // then
@@ -132,7 +132,7 @@ describe('Flapy', function() {
 
         // when
         tab.flapy({
-          headers: [{ text: 'Ruby', active: true }, { text: 'Python', active: true }]
+          headers: [{ text: 'Ruby', active: true }, { text: 'Python', active: true }, { text: 'Java' }]
         });
 
         // then
@@ -147,17 +147,15 @@ describe('Flapy', function() {
       it ('actives the clicked head', function() {
         // given
         var tab = $('#tab').flapy({
-          headers: [{ text: 'Ruby' }, { text: 'Python' }]
+          headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' }]
         });
 
-        var opt = tab[0].opt;
-
         // when
-        opt.tabs.eq(1).click();
+        tab[0].tabs.eq(1).click();
 
         // then
-        expect(opt.tabs.eq(0)).not.toHaveClass('active');
-        expect(opt.tabs.eq(1)).toHaveClass('active');
+        expect(tab[0].tabs.eq(0)).not.toHaveClass('active');
+        expect(tab[0].tabs.eq(1)).toHaveClass('active');
       });
     });
 
@@ -165,17 +163,15 @@ describe('Flapy', function() {
       it ('the same head keeps active', function() {
         // given
         var tab = $('#tab').flapy({
-          headers: [{ text: 'Ruby' }, { text: 'Python' }]
+          headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' }]
         });
 
-        var opt = tab[0].opt;
-
         // when
-        opt.tabs.eq(0).click();
+        tab[0].tabs.eq(0).click();
 
         // then
-        expect(opt.tabs.eq(0)).toHaveClass('active');
-        expect(opt.tabs.eq(1)).not.toHaveClass('active');
+        expect(tab[0].tabs.eq(0)).toHaveClass('active');
+        expect(tab[0].tabs.eq(1)).not.toHaveClass('active');
       });
     });
 
@@ -192,7 +188,7 @@ describe('Flapy', function() {
             });
 
             // then
-            var tabs = tab[0].opt.tabs;
+            var tabs = tab[0].tabs;
 
             expect(tabs.eq(0)).not.toHaveClass('flapy-none-left');
             expect(tabs.eq(1)).toHaveClass('flapy-none-left');
@@ -215,7 +211,7 @@ describe('Flapy', function() {
             });
 
             // then
-            var tabs = tab[0].opt.tabs;
+            var tabs = tab[0].tabs;
 
             expect(tabs.eq(0)).not.toHaveClass('flapy-none-left');
             expect(tabs.eq(1)).not.toHaveClass('flapy-none-left');
@@ -236,7 +232,7 @@ describe('Flapy', function() {
               headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' }]
             });
 
-            var tabs = tab[0].opt.tabs;
+            var tabs = tab[0].tabs;
 
             // when
             tabs.eq(2).click();
@@ -259,7 +255,7 @@ describe('Flapy', function() {
               headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java', active: true }]
             });
 
-            var tabs = tab[0].opt.tabs;
+            var tabs = tab[0].tabs;
 
             // when
             tabs.eq(0).click();
@@ -288,7 +284,7 @@ describe('Flapy', function() {
         });
 
         // then
-        var tabs = tab[0].opt.tabs;
+        var tabs = tab[0].tabs;
 
         expect(tabs.eq(0).width()).toBe(100);
         expect(tabs.eq(1).width()).toBe(100);
@@ -307,7 +303,7 @@ describe('Flapy', function() {
         });
 
         // then
-        var tabs = tab[0].opt.tabs;
+        var tabs = tab[0].tabs;
 
         expect(tabs.eq(0).width()).toBe(101);
         expect(tabs.eq(1).width()).toBe(101);
@@ -333,7 +329,7 @@ describe('Flapy', function() {
 
       // when
       tab.flapy({
-        headers: [{ text: 'Ruby' }, { text: 'Python', active: true }]
+        headers: [{ text: 'Ruby' }, { text: 'Python', active: true }, { text: 'Java' }]
       });
 
       // then
@@ -345,17 +341,15 @@ describe('Flapy', function() {
       it ('actives the boxe with the same clicked head index', function() {
         // given
         var tab = $('#tab').flapy({
-          headers: [{ text: 'Ruby' }, { text: 'Python' }]
+          headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' }]
         });
 
-        var opt = tab[0].opt;
-
         // when
-        opt.tabs.eq(1).click();
+        tab[0].tabs.eq(1).click();
 
         // then
-        expect(opt.boxes.eq(0)).not.toHaveClass('active');
-        expect(opt.boxes.eq(1)).toHaveClass('active');
+        expect(tab[0].boxes.eq(0)).not.toHaveClass('active');
+        expect(tab[0].boxes.eq(1)).toHaveClass('active');
       });
     });
 
@@ -363,16 +357,15 @@ describe('Flapy', function() {
       it ('the same box keeps active', function() {
         // given
         var tab = $('#tab').flapy({
-          headers: [{ text: 'Ruby', active: true }, { text: 'Python' }]
-        }),
-        opt     = tab[0].opt;
+          headers: [{ text: 'Ruby', active: true }, { text: 'Python' }, { text: 'Java' }]
+        });
 
         // when
-        opt.tabs.eq(0).click();
+        tab[0].tabs.eq(0).click();
 
         // then
-        expect(opt.boxes.eq(0)).toHaveClass('active');
-        expect(opt.boxes.eq(1)).not.toHaveClass('active');
+        expect(tab[0].boxes.eq(0)).toHaveClass('active');
+        expect(tab[0].boxes.eq(1)).not.toHaveClass('active');
       });
     });
 
@@ -380,10 +373,10 @@ describe('Flapy', function() {
       it ('calls click bind', function() {
         // given
         var tab = $('#tab').flapy({
-          headers: [{ text: 'Ruby', active: true }, { text: 'Python' }]
+          headers: [{ text: 'Ruby', active: true }, { text: 'Python' }, { text: 'Java' }]
         }),
         opt     = tab[0].opt,
-        target  = opt.tabs.eq(0);
+        target  = tab[0].tabs.eq(0);
 
         spyOnEvent(target, 'click');
 
@@ -399,10 +392,10 @@ describe('Flapy', function() {
       it ('calls click bind', function() {
         // given
         var tab = $('#tab').flapy({
-          headers: [{ text: 'Ruby', active: true }, { text: 'Python' }]
+          headers: [{ text: 'Ruby', active: true }, { text: 'Python' }, { text: 'Java' }]
         }),
         opt     = tab[0].opt,
-        target  = opt.tabs.eq(1);
+        target  = tab[0].tabs.eq(1);
 
         spyOnEvent(target, 'click');
 
@@ -411,6 +404,32 @@ describe('Flapy', function() {
 
         // then
         expect('click').toHaveBeenTriggeredOn(target);
+      });
+    });
+  });
+
+  describe('border', function() {
+    context('disabled', function() {
+      it ('prevents the border styles', function() {
+        // given
+        var tab = $('#tab');
+
+        // when
+        tab.flapy({
+          border : false,
+          headers: [{ text: 'Ruby', active: true }, { text: 'Python' }, { text: 'Java' }]
+        });
+
+        // then
+        var tabs = tab[0].tabs;
+
+        expect(tabs.eq(0)).not.toHaveClass('flapy-none-left');
+        expect(tabs.eq(1)).not.toHaveClass('flapy-none-left');
+        expect(tabs.eq(2)).not.toHaveClass('flapy-none-left');
+
+        expect(tabs.eq(0)).not.toHaveClass('flapy-none-right');
+        expect(tabs.eq(1)).not.toHaveClass('flapy-none-right');
+        expect(tabs.eq(2)).not.toHaveClass('flapy-none-right');
       });
     });
   });
@@ -467,30 +486,89 @@ describe('Flapy', function() {
     });
   });
 
-
-  describe('#border', function() {
-    context('disabled', function() {
-      it ('prevents the border styles', function() {
+  describe('hide', function() {
+    context('true', function() {
+      it ('hides the tab', function() {
         // given
         var tab = $('#tab');
 
         // when
         tab.flapy({
-          border : false,
-          headers: [{ text: 'Ruby', active: true }, { text: 'Python' }, { text: 'Java' }]
+          headers: [{ text: 'Ruby', hide: true }, { text: 'Python' }, { text: 'Java' }]
         });
 
         // then
-        var tabs = tab[0].opt.tabs;
-
-        expect(tabs.eq(0)).not.toHaveClass('flapy-none-left');
-        expect(tabs.eq(1)).not.toHaveClass('flapy-none-left');
-        expect(tabs.eq(2)).not.toHaveClass('flapy-none-left');
-
-        expect(tabs.eq(0)).not.toHaveClass('flapy-none-right');
-        expect(tabs.eq(1)).not.toHaveClass('flapy-none-right');
-        expect(tabs.eq(2)).not.toHaveClass('flapy-none-right');
+        expect(tab[0].tabs.eq(0)).toBeHidden();
       });
+
+      it ('hides the boxes', function() {
+        // given
+        var tab = $('#tab');
+
+        // when
+        tab.flapy({
+          headers: [{ text: 'Ruby', hide: true }, { text: 'Python' }, { text: 'Java' }]
+        });
+
+        // then
+        expect(tab[0].boxes.eq(0)).toBeHidden();
+      });
+
+      context('on a active tab', function() {
+        context('not beeing the first', function() {
+          it ('hides and desactive the given tab and active the first one', function() {
+            // given
+            var tab = $('#tab');
+
+            // when
+            tab.flapy({
+              headers: [{ text: 'Ruby' }, { text: 'Python', active: true, hide: true }, { text: 'Java' }]
+            });
+
+            // then
+            var tabs = tab[0].tabs;
+
+            expect(tabs.first()).toHaveClass('active');
+            expect(tabs.eq(1)).not.toHaveClass('active');
+            expect(tabs.eq(1)).toBeHidden();
+          });
+        });
+
+        context('beeing the first', function() {
+          it ('hides and desactive the given tab and active the next one', function() {
+            // given
+            var tab = $('#tab');
+
+            // when
+            tab.flapy({
+              headers: [{ text: 'Ruby', active: true, hide: true }, { text: 'Python' }, { text: 'Java' }]
+            });
+
+            // then
+            var tabs = tab[0].tabs;
+
+            expect(tabs.first()).not.toHaveClass('active');
+            expect(tabs.first()).toBeHidden();
+            expect(tabs.eq(1)).toHaveClass('active');
+          });
+        });
+      });
+    });
+  });
+
+  describe('options', function() {
+    it ('has the right value options', function() {
+      // given
+      var flapy = $.fn.flapy
+
+      // when
+      var opt = flapy.defaults
+
+      // then
+      expect(opt.border).toBeTruthy();
+      expect(opt.box).toEqual('div');
+      expect(opt.headers).toEqual([]);
+      expect(opt.wrapper).toBeUndefined();
     });
   });
 });
