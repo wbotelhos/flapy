@@ -571,4 +571,100 @@ describe('Flapy', function() {
       expect(opt.wrapper).toBeUndefined();
     });
   });
+
+  describe('remove', function() {
+    context('true', function() {
+      it ('removes the tab from memory', function() {
+        // given
+        var tab = $('#tab');
+
+        // when
+        tab.flapy({
+          headers: [{ text: 'Ruby', remove: true }, { text: 'Python' }, { text: 'Java' }]
+        });
+
+        // then
+        expect(tab[0].tabs.length).toEqual(2);
+      });
+
+      it ('removes the tab from DOM', function() {
+        // given
+        var tab = $('#tab');
+
+        // when
+        tab.flapy({
+          headers: [{ text: 'Ruby', remove: true }, { text: 'Python' }, { text: 'Java' }]
+        });
+
+        // then
+        expect(tab.find('.flapy-header').children('li').length).toEqual(2);
+      });
+
+      it ('removes the boxes from memory', function() {
+        // given
+        var tab = $('#tab');
+
+        // when
+        tab.flapy({
+          headers: [{ text: 'Ruby', remove: true }, { text: 'Python' }, { text: 'Java' }]
+        });
+
+        // then
+        expect(tab[0].boxes.length).toEqual(2);
+      });
+
+      it ('removes the boxes from DOM', function() {
+        // given
+        var tab = $('#tab');
+
+        // when
+        tab.flapy({
+          headers: [{ text: 'Ruby', remove: true }, { text: 'Python' }, { text: 'Java' }]
+        });
+
+        // then
+        expect(tab.children('.flapy-box').length).toEqual(2);
+      });
+
+      context('on a active tab', function() {
+        context('not beeing the first', function() {
+          xit ('removes and desactive the given tab and active the first one', function() {
+            // given
+            var tab = $('#tab');
+
+            // when
+            tab.flapy({
+              headers: [{ text: 'Ruby' }, { text: 'Python', active: true, remove: true }, { text: 'Java' }]
+            });
+
+            // then
+            var tabs = tab[0].tabs;
+
+            expect(tabs.first()).toHaveClass('active');
+            expect(tabs.last).not.toHaveClass('active');
+            expect(tabs.last()).toBeHidden();
+          });
+        });
+
+        context('beeing the first', function() {
+          xit ('removes and desactive the given tab and active the next one', function() {
+            // given
+            var tab = $('#tab');
+
+            // when
+            tab.flapy({
+              headers: [{ text: 'Ruby', active: true, remove: true }, { text: 'Python' }, { text: 'Java' }]
+            });
+
+            // then
+            var tabs = tab[0].tabs;
+
+            expect(tabs.last()).toHaveClass('active');
+            expect(tabs.first).not.toHaveClass('active');
+            expect(tabs.first()).toBeHidden();
+          });
+        });
+      });
+    });
+  });
 });
