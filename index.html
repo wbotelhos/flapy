@@ -30,7 +30,7 @@
 
 			<nav role="navigation">
 			  <ul>
-			    <li><a href="http://github.com/wbotelhos/flapy/archive/0.2.0.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v0.2.0</a></li>
+			    <li><a href="http://github.com/wbotelhos/flapy/archive/0.3.0.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v0.3.0</a></li>
           <li><a href="http://github.com/wbotelhos/flapy" title="Github" target="_blank"><i class="icon-github icon-large"></i>Github</a></li>
           <li><a href="http://wbotelhos.com/labs" title="yLab" target="_blank"><i class="icon-beaker icon-large"></i>yLab</a></li>
           <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Flapy" title="Donate" target="_blank"><i class="icon-heart-empty icon-large"></i>Donate</a></li>
@@ -41,9 +41,14 @@
     <div id="container">
       <section role="main">
         <article>
-          <h2>Default configuration:</h2>
+          <h2 id="default">
+            <a href="#default">Default:</a>
+          </h2>
 
-          <p>This example shows how to use the default configuration with <code>div</code>  boxes.</p>
+          <p>
+            This example shows how to use the default configuration with <code>div</code> boxes.<br />
+            The param <code>text</code> is the text inside each tab.
+          </p>
 
           <div class="demo">
             <div id="default-demo">
@@ -70,14 +75,16 @@
 </pre>
 </div>
 
-        <h2>Including content tag into the header:</h2>
+        <h2 id="tag">
+          <a href="#tag">Tag:</a>
+        </h2>
 
         <p>
           You can choose some HTML tag to put inside the <code>li</code> header:
         </p>
 
         <div class="demo">
-          <div id="tag">
+          <div id="tag-demo">
             <div>Box 1</div>
             <div>Box 2</div>
             <div>Box 3</div>
@@ -87,7 +94,7 @@
 <div class="highlight">
 <pre>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'selector'</span><span class="p">).</span><span class="nx">flapy</span><span class="p">({</span>
-  <span class="nx">headers</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span> <span class="p">}]</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Java'</span> <span class="p">}]</span>
 <span class="p">});</span>
 </pre>
 </div>
@@ -96,14 +103,16 @@
         <p>Do not forget the style: <code>.flapy-header li h2</code> and <code>.flapy-header li.active h2</code>.</p>
         </blockquote>
 
-        <h2>Activating a tab:</h2>
+        <h2 id="active">
+          <a href="#active">Active:</a>
+        </h2>
 
         <p>
           By default the first tab is actived, but you can choose which tab will start activated with the <code>active</code> option:
         </p>
 
         <div class="demo">
-          <div id="active">
+          <div id="active-demo">
             <div>Box 1</div>
             <div>Box 2</div>
             <div>Box 3</div>
@@ -113,19 +122,21 @@
 <div class="highlight">
 <pre>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'selector'</span><span class="p">).</span><span class="nx">flapy</span><span class="p">({</span>
-  <span class="nx">headers</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span><span class="p">,</span> <span class="nx">active</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}]</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Java'</span><span class="p">,</span> <span class="nx">active</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}]</span>
 <span class="p">});</span>
 </pre>
 </div>
 
-        <h2>Using a custom wrapper:</h2>
+        <h2 id="wrapper">
+          <a href="#wrapper">Wrapper:</a>
+        </h2>
 
         <p>
           Normally we have a header and several boxes that hide and show up. When we want to add some fixed element outside the boxes, we need to add a wrapper:
         </p>
 
         <div class="demo">
-          <div id="wrapper-box">
+          <div id="wrapper-demo">
             <div>
               <p>Fixed element</p>
 
@@ -139,7 +150,7 @@
 <div class="highlight">
 <pre>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'selector'</span><span class="p">).</span><span class="nx">flapy</span><span class="p">({</span>
-  <span class="nx">headers</span> <span class="o">:</span> <span class="p">[{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span> <span class="p">}]</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Java'</span> <span class="p">}]</span>
   <span class="nx">wrapper</span><span class="o">:</span> <span class="s1">'div'</span>
 <span class="p">});</span>
 </pre>
@@ -158,14 +169,16 @@
 </pre>
 </div>
 
-        <h2>Styling the tabs:</h2>
+        <h2 id="border">
+          <a href="#border">Border:</a>
+        </h2>
 
         <p>
           You can disable the auto borders to design your own tab style.
         </p>
 
         <div class="demo">
-          <div id="border">
+          <div id="border-demo">
             <div>Box 1</div>
             <div>Box 2</div>
             <div>Box 3</div>
@@ -176,7 +189,59 @@
 <pre>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'selector'</span><span class="p">).</span><span class="nx">flapy</span><span class="p">({</span>
   <span class="nx">border</span> <span class="o">:</span> <span class="kc">true</span>,
-  <span class="nx">headers</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span> <span class="p">}]</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">tag</span><span class="o">:</span> <span class="s1">'h3'</span><span class="p">,</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Java'</span> <span class="p">}]</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+        <h2 id="hide">
+          <a href="#hide">Hide:</a>
+        </h2>
+
+        <p>
+          Hides the given tab. It still exist on DOM.<br />
+          It is good when you have a logic to hide or show, without much restrictions.<br />
+          If you hide an actived tab, the first available will be actived.
+        </p>
+
+        <div class="demo">
+          <div id="hide-demo">
+            <div>Box 1</div>
+            <div>Box 2</div>
+            <div>Box 3</div>
+          </div>
+        </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'selector'</span><span class="p">).</span><span class="nx">flapy</span><span class="p">({</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span><span class="p">,</span> <span class="nx">hide</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Java'</span> <span class="p">}</span> <span class="p">]</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+        <h2 id="remove">
+          <a href="#remove">Remove:</a>
+        </h2>
+
+        <p>
+          Different from <a href="#hide">hide</a> it removes the element of the DOM.<br />
+          Good to use when you have restrict data that will not be displayed on the screen and then want to its markup.<br />
+          If you remove an actived tab, the first available will be actived.
+        </p>
+
+        <div class="demo">
+          <div id="remove-demo">
+            <div>Box 1</div>
+            <div>Box 2</div>
+            <div>Box 3</div>
+          </div>
+        </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'selector'</span><span class="p">).</span><span class="nx">flapy</span><span class="p">({</span>
+  <span class="nx">headers</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Ruby'</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Python'</span><span class="p">,</span> <span class="nx">remove</span><span class="o">:</span> <span class="kc">true</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">text</span><span class="o">:</span> <span class="s1">'Java'</span> <span class="p">}</span> <span class="p">]</span>
 <span class="p">});</span>
 </pre>
 </div>
@@ -208,7 +273,7 @@
 
           <div id="headers" class="option">
             <div>headers: <span>[]</span></div>
-            <p>Array of object containing <code>tag</code>, <code>text</code> and <code>active</code> attributes representing each tab.</p>
+            <p>Array of object containing <code>tag</code>, <code>text</code>, <code>active</code>, <code>hide</code> and <code>remove</code> attributes representing each tab.</p>
           </div>
 
           <div id="tag" class="option">
@@ -254,24 +319,32 @@
   <script type="text/javascript">
     $(function() {
       $('#default-demo').flapy({
-        headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' } ]
+        headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' }]
       });
 
-      $('#tag').flapy({
-        headers: [{ tag: 'h3', text: 'Ruby' }, { tag: 'h3', text: 'Python' }, { tag: 'h3', text: 'Java' } ]
+      $('#tag-demo').flapy({
+        headers: [{ tag: 'h3', text: 'Ruby' }, { tag: 'h3', text: 'Python' }, { tag: 'h3', text: 'Java' }]
       });
 
-      $('#active').flapy({
-        headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java', active: true } ]
+      $('#active-demo').flapy({
+        headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java', active: true }]
       });
 
-      $('#wrapper-box').flapy({
-        headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' } ],
+      $('#wrapper-demo').flapy({
+        headers: [{ text: 'Ruby' }, { text: 'Python' }, { text: 'Java' }],
         wrapper: 'div'
       });
 
-      $('#border').flapy({
-        headers: [{ tag: 'h3', text: 'Ruby' }, { tag: 'h3', text: 'Python' }, { tag: 'h3', text: 'Java' } ]
+      $('#border-demo').flapy({
+        headers: [{ tag: 'h3', text: 'Ruby' }, { tag: 'h3', text: 'Python' }, { tag: 'h3', text: 'Java' }]
+      });
+
+      $('#hide-demo').flapy({
+        headers: [{ text: 'Ruby' }, { text: 'Python', hide: true }, { text: 'Java' }]
+      });
+
+      $('#remove-demo').flapy({
+        headers: [{ text: 'Ruby' }, { text: 'Python', remove: true }, { text: 'Java' }]
       });
     });
 

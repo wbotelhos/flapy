@@ -1,5 +1,12 @@
 # jQuery Flapy - A Tab Menu - http://wbotelhos.com/flapy
 
+## 0.3.0
+
+### News
+
+- Added option `hide` on `headers` options to hide the given tab;
+- Added option `remove` on `headers` options to remove the given tab.
+
 ## 0.2.0
 
 ### News
